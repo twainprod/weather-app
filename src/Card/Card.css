@@ -1,0 +1,9 @@
+.cardItem {
+  width: 200px;
+}
+.card {
+  background: rgba(255, 255, 255, 0);
+}
+.card-header {
+  background-color: #fff;
+}
