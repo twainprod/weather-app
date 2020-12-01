@@ -34,14 +34,15 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         cardData: action.cardData,       
-        cities: [...state.cities, {
+        cities: state.cities.find(item => item.name === action.cardData.name) ? [...state.cities] :
+          [...state.cities, {
           name: action.cardData.name, id: action.cardData.id,
           currentTemp: action.cardData.currentTemp,
           icon: action.cardData.icon,
           country: action.cardData.country,
           hourlyData: action.cardData.hourlyData
         }],   
-        storageData: localStorage.setItem('cities', JSON.stringify([...state.cities, action.cardData ])),
+        storageData: localStorage.setItem('cities', JSON.stringify(state.cities.find(item => item.name === action.cardData.name) ? [...state.cities] : [...state.cities, action.cardData ])),
        }
     case UPDATE_CURRENT_WEATHER:      
       return {
